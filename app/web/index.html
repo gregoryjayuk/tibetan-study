@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c1a17">
+<title>Tibetan</title>
+<style>
+:root{--bg:#1c1a17;--card:#26231f;--card2:#2f2b26;--line:#3a352f;--text:#ece4d6;--muted:#a39888;--faint:#6f665a;--accent:#c4986b;--good:#7fa37a;--bad:#c97a6a;--easy:#8fa9c4;--scale:1}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f1e8;--card:#fffdf8;--card2:#efe8dc;--line:#ddd3c4;--text:#2a251f;--muted:#6f6556;--faint:#a49a8a;--accent:#9a6b3c;--good:#4f7a4a;--bad:#a5503f;--easy:#4f6f93}}
+:root[data-theme="light"]{--bg:#f6f1e8;--card:#fffdf8;--card2:#efe8dc;--line:#ddd3c4;--text:#2a251f;--muted:#6f6556;--faint:#a49a8a;--accent:#9a6b3c;--good:#4f7a4a;--bad:#a5503f;--easy:#4f6f93}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+body{min-height:100vh;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-height:48px;cursor:pointer}
+button:active{transform:scale(.98)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#1c1a17;font-weight:600}
+button.ghost{background:transparent}
+button:disabled{opacity:.45}
+select,textarea,input{font:inherit;color:var(--text);background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+textarea{width:100%;min-height:180px}
+a{color:var(--accent)}
+.bo{font-family:"Noto Serif Tibetan","Kailasa","Jomolhari","Microsoft Himalaya","Noto Sans Tibetan",serif;line-height:1.75;letter-spacing:.01em}
+.bo-xl{font-size:calc(44px*var(--scale))}.bo-l{font-size:calc(32px*var(--scale))}.bo-m{font-size:calc(26px*var(--scale))}.bo-s{font-size:calc(21px*var(--scale))}
+.en-l{font-size:calc(22px*var(--scale))}.en-m{font-size:calc(17px*var(--scale))}
+.muted{color:var(--muted)}.faint{color:var(--faint)}.small{font-size:13px}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 24px}
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;display:flex;align-items:center;gap:10px}
+header.top h1{font-size:18px;margin:0;font-weight:600;flex:1}
+header.top .icon{min-height:40px;padding:6px 12px}
+nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav.bottom button{flex:1;background:transparent;border:0;border-radius:10px;min-height:52px;font-size:14px;color:var(--muted)}
+nav.bottom button.on{color:var(--accent);background:var(--card2)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 12px}
+.card h2{font-size:15px;margin:0 0 4px;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.card .big{font-size:20px;font-weight:600;margin:2px 0 8px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grow{flex:1}
+.list .it{padding:10px 0;border-bottom:1px solid var(--line)}
+.list .it:last-child{border-bottom:0}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:var(--card2);color:var(--muted);border:1px solid var(--line)}
+.pill.ok{color:var(--good)}.pill.cur{color:var(--accent)}.pill.lock{color:var(--faint)}
+.bar{height:6px;background:var(--card2);border-radius:6px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--accent)}
+.session{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column}
+.session .shead{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line)}
+.session .sbody{flex:1;overflow:auto;padding:20px 16px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.session .sbody>div{width:100%;max-width:680px}
+.session .sfoot{padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:10px;max-width:720px;width:100%;margin:0 auto}
+.session .sfoot button{flex:1;min-height:56px;font-size:17px}
+.again{color:var(--bad)!important;border-color:var(--bad)!important}.good{color:var(--good)!important;border-color:var(--good)!important}.easy{color:var(--easy)!important;border-color:var(--easy)!important}
+.label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:14px 0 2px}
+.answer{border-top:1px solid var(--line);margin-top:18px;padding-top:14px}
+.ex{margin-top:12px;text-align:left}
+.reader .ln{padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.reader .who{font-size:13px;color:var(--accent)}
+.reader .tr{display:none;color:var(--muted);font-size:calc(16px*var(--scale));padding-top:2px}
+.reader .ln.open .tr,.reader.all .tr{display:block}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));background:var(--card2);border:1px solid var(--line);padding:10px 16px;border-radius:12px;z-index:40;max-width:90%}
+.seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{min-height:40px;padding:6px 12px;font-size:14px}.seg button.on{border-color:var(--accent);color:var(--accent)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 14px;align-items:center}
+.center{text-align:center}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><h1 id="title">Tibetan</h1><button class="icon ghost" id="btnSettings" aria-label="Settings">Settings</button></header>
+<main class="wrap" id="view"><p class="muted">Loading…</p></main>
+<nav class="bottom" id="nav">
+<button data-tab="today" class="on">Today</button>
+<button data-tab="practice">Practice</button>
+<button data-tab="read">Read</button>
+<button data-tab="library">Library</button>
+</nav>
+<script>
+'use strict';
+/* ---------- storage: the Android shell, the Mac server, or (read-only) nothing ---------- */
+const IO = (function () {
+  const B = window.TibetanBridge;
+  if (B) return {
+    kind: 'phone',
+    device: () => Promise.resolve(B.device()),
+    read: p => Promise.resolve(B.read(p) || null),
+    list: d => Promise.resolve(JSON.parse(B.list(d) || '[]')),
+    append: (p, t) => Promise.resolve(B.append(p, t) === 'ok'),
+    write: (p, t) => Promise.resolve(B.write(p, t) === 'ok'),
+  };
+  if (location.protocol.startsWith('http')) return {
+    kind: 'server',
+    device: () => fetch('/api/device').then(r => r.text()),
+    read: p => fetch('/api/read?p=' + encodeURIComponent(p)).then(r => r.ok ? r.text() : null),
+    list: d => fetch('/api/list?d=' + encodeURIComponent(d)).then(r => r.ok ? r.json() : []),
+    append: (p, t) => fetch('/api/append', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({p, text: t})}).then(r => r.ok),
+    write: (p, t) => fetch('/api/write', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({p, text: t})}).then(r => r.ok),
+  };
+  return {kind: 'none', device: () => Promise.resolve('browser'), read: () => Promise.resolve(null), list: () => Promise.resolve([]), append: () => Promise.resolve(false), write: () => Promise.resolve(false)};
+})();
+
+/* ---------- settings (per device) ---------- */
+const SET = Object.assign({gloss: 'en', perDay: 20, scale: 1, theme: 'auto'}, (() => { try { return JSON.parse(localStorage.getItem('tib.settings') || '{}'); } catch (e) { return {}; } })());
+function saveSet() { try { localStorage.setItem('tib.settings', JSON.stringify(SET)); } catch (e) {} applySet(); }
+function applySet() { document.documentElement.style.setProperty('--scale', SET.scale); if (SET.theme === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', SET.theme); }
+applySet();
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const DAY = 86400000;
+function dayIndex(t) { const d = new Date(t - 4 * 3600 * 1000); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); }
+function toast(msg, ms) { const el = document.createElement('div'); el.className = 'toast'; el.textContent = msg; document.body.appendChild(el); setTimeout(() => el.remove(), ms || 2600); }
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function gloss(it) { const en = it.en || '', zh = it.zh || ''; if (SET.gloss === 'zh' && zh) return zh; if (SET.gloss === 'both' && zh) return en + ' · ' + zh; return en || zh; }
+function fmtDate(d) { const x = new Date(d + 'T12:00:00'); return x.toLocaleDateString(undefined, {weekday: 'short', day: 'numeric', month: 'short'}); }
+
+/* ---------- FSRS-4.5 scheduler ---------- */
+const W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+const clampD = d => Math.min(10, Math.max(1, d));
+const initS = g => W[g - 1];
+const initD = g => clampD(W[4] - (g - 3) * W[5]);
+const retr = (t, S) => Math.pow(1 + t / (9 * S), -1);
+const nextD = (D, g) => clampD(W[7] * initD(4) + (1 - W[7]) * (D - W[6] * (g - 3)));
+const sRecall = (D, S, R, g) => S * (Math.exp(W[8]) * (11 - D) * Math.pow(S, -W[9]) * (Math.exp(W[10] * (1 - R)) - 1) * (g === 4 ? W[16] : 1) + 1);
+const sForget = (D, S, R) => W[11] * Math.pow(D, -W[12]) * (Math.pow(S + 1, W[13]) - 1) * Math.exp(W[14] * (1 - R));
+const ivl = S => Math.max(1, Math.min(365, Math.round(S)));
+function schedule(st, t, g) {
+  const day = dayIndex(t);
+  if (!st) { const S = initS(g); return {S, D: initD(g), last: t, lastDay: day, due: day + ivl(S), reps: 1, lapses: g === 1 ? 1 : 0}; }
+  if (st.lastDay === day) { if (g === 1 && st.due > day + 1) st.due = day + 1; return st; }
+  const R = retr(Math.max(0, (t - st.last) / DAY), st.S);
+  const S = g === 1 ? sForget(st.D, st.S, R) : sRecall(st.D, st.S, R, g);
+  return {S, D: nextD(st.D, g), last: t, lastDay: day, due: day + ivl(S), reps: st.reps + 1, lapses: st.lapses + (g === 1 ? 1 : 0)};
+}
+
+/* ---------- content → items ---------- */
+let C = null, DEVICE = 'browser';
+const ITEMS = new Map();      // id -> item
+const LESSON_ITEMS = {};      // lessonId -> {words:[], phrases:[], grammar:[]}
+function buildItems() {
+  for (const lid of C.course.concat(C.extra)) {
+    const L = C.lessons[lid]; if (!L) continue;
+    const g = {words: [], phrases: [], grammar: []};
+    L.vocab.forEach(v => { const it = {id: lid + ':v' + v.n, kind: 'word', bo: v.bo, en: v.en, zh: v.zh, ex: v.ex, ex_en: v.ex_en, note: v.note, src: lid}; ITEMS.set(it.id, it); g.words.push(it.id); });
+    L.phrases.forEach(v => { const it = {id: lid + ':x' + v.n, kind: 'phrase', bo: v.bo, en: v.en, zh: v.zh, note: v.note, src: lid}; ITEMS.set(it.id, it); g.phrases.push(it.id); });
+    if (L.grammar.patterns.length || L.grammar.en) { const it = {id: lid + ':g', kind: 'grammar', bo: L.grammar.patterns.join(' · '), en: L.grammar.en, notes: L.grammar.notes, examples: L.grammar.examples.concat(L.patterns.slice(0, 2)), src: lid}; ITEMS.set(it.id, it); g.grammar.push(it.id); }
+    L.grammar.examples.forEach((e, k) => { if (!e.en) return; const it = {id: lid + ':ge' + (k + 1), kind: 'sentence', bo: e.bo, en: e.en, src: lid}; ITEMS.set(it.id, it); g.grammar.push(it.id); });
+    L.patterns.slice(0, 4).forEach((e, k) => { const it = {id: lid + ':gp' + (k + 1), kind: 'sentence', bo: e.bo, en: e.en, src: lid}; ITEMS.set(it.id, it); g.grammar.push(it.id); });
+    LESSON_ITEMS[lid] = g;
+  }
+  for (const c of C.classes) for (const x of c.items) ITEMS.set(x.id, Object.assign({}, x, {src: 'class:' + c.date}));
+}
+const cardDirs = it => (it.kind === 'sentence' || it.kind === 'grammar') ? ['r'] : ['r', 'p'];
+
+/* ---------- progress: event log, replayed ---------- */
+let EV = [];
+const P = {cards: new Map(), intro: new Map(), steps: new Set(), done: new Set(), skipped: new Set(), read: new Set(), days: new Set()};
+function apply(e) {
+  if (e.k === 'intro') { if (!P.intro.has(e.i)) P.intro.set(e.i, e.t); }
+  else if (e.k === 'r') { if (!P.intro.has(e.c.split('|')[0])) P.intro.set(e.c.split('|')[0], e.t); P.cards.set(e.c, schedule(P.cards.get(e.c), e.t, e.g)); P.days.add(dayIndex(e.t)); }
+  else if (e.k === 'step') P.steps.add(e.l + '|' + e.s);
+  else if (e.k === 'lesson') P.done.add(e.l);
+  else if (e.k === 'skip') { P.skipped.add(e.l); }
+  else if (e.k === 'read') P.read.add(e.x);
+}
+async function loadProgress() {
+  const files = (await IO.list('progress')).filter(f => f.endsWith('.jsonl'));
+  const all = [];
+  for (const f of files) { const txt = await IO.read('progress/' + f); if (!txt) continue; for (const line of txt.split('\n')) { if (!line.trim()) continue; try { all.push(JSON.parse(line)); } catch (e) {} } }
+  if (IO.kind === 'none') { try { (JSON.parse(localStorage.getItem('tib.events') || '[]')).forEach(e => all.push(e)); } catch (e) {} }
+  all.sort((a, b) => a.t - b.t);
+  EV = all; for (const e of all) apply(e);
+}
+let pending = Promise.resolve();
+function log(e) {
+  e.t = e.t || Date.now(); e.d = DEVICE; EV.push(e); apply(e);
+  const line = JSON.stringify(e) + '\n';
+  pending = pending.then(() => IO.append('progress/' + DEVICE + '.jsonl', line)).then(ok => {
+    if (ok) return;
+    if (IO.kind === 'none') { try { const a = JSON.parse(localStorage.getItem('tib.events') || '[]'); a.push(e); localStorage.setItem('tib.events', JSON.stringify(a)); } catch (x) {} return; }
+    toast('Could not save progress — check the folder');
+  });
+}
+
+/* ---------- queries ---------- */
+const today = () => dayIndex(Date.now());
+function isDue(cid) { const st = P.cards.get(cid); if (st) return st.due <= today(); const id = cid.split('|')[0]; const t = P.intro.get(id); return t != null && dayIndex(t) < today(); }
+function dueCards() {
+  const out = [];
+  for (const id of P.intro.keys()) { const it = ITEMS.get(id); if (!it) continue; for (const d of cardDirs(it)) { const cid = id + '|' + d; if (isDue(cid)) out.push(cid); } }
+  out.sort((a, b) => ((P.cards.get(a) || {due: 0}).due - (P.cards.get(b) || {due: 0}).due));
+  return out;
+}
+const newToday = () => { const d = today(); let n = 0; for (const t of P.intro.values()) if (dayIndex(t) === d) n++; return n; };
+function currentLesson() { for (const lid of C.course) if (!P.done.has(lid) && !P.skipped.has(lid)) return lid; return null; }
+const STEPS = ['words', 'phrases', 'grammar', 'conversation'];
+const STEP_NAMES = {words: 'New words', phrases: 'Everyday phrases', grammar: 'Grammar', conversation: 'The conversation'};
+function stepDone(lid, s) { if (P.steps.has(lid + '|' + s)) return true; const g = LESSON_ITEMS[lid]; if (s === 'phrases' && g && !g.phrases.length) return true; return false; }
+function nextStep(lid) { for (const s of STEPS) if (!stepDone(lid, s)) return s; return null; }
+function classNew() { const out = []; for (const c of C.classes) for (const x of c.items) if (!P.intro.has(x.id)) out.push(x.id); return out; }
+function lessonCounts(lid) { const g = LESSON_ITEMS[lid] || {words: [], phrases: [], grammar: []}; const all = g.words.concat(g.phrases, g.grammar); return {all: all.length, learned: all.filter(i => P.intro.has(i)).length}; }
+function streak() { let n = 0, d = today(); if (!P.days.has(d)) d--; while (P.days.has(d)) { n++; d--; } return n; }
+
+/* ---------- navigation ---------- */
+let TAB = 'today';
+const STACK = [];
+function show(tab, push) { if (push !== false && TAB !== tab) STACK.push(TAB); TAB = tab; document.querySelectorAll('nav.bottom button').forEach(b => b.classList.toggle('on', b.dataset.tab === tab)); render(); window.scrollTo(0, 0); }
+function render() { const v = $('#view'); ({today: renderToday, practice: renderPractice, read: renderRead, library: renderLibrary, settings: renderSettings}[TAB] || renderToday)(v); }
+window.onAndroidBack = function () { if (SESSION) { SESSION.close(); return 'handled'; } if (READER_OPEN) { closeReader(); return 'handled'; } if (DETAIL) { DETAIL = null; render(); return 'handled'; } if (TAB !== 'today') { show('today', false); return 'handled'; } return 'exit'; };
+document.querySelectorAll('nav.bottom button').forEach(b => b.onclick = () => { DETAIL = null; closeReader(); show(b.dataset.tab); });
+$('#btnSettings').onclick = () => { DETAIL = null; show('settings'); };
+
+/* ---------- Today ---------- */
+function renderToday(v) {
+  $('#title').textContent = 'Tibetan';
+  const due = dueCards(), lid = currentLesson(), L = lid && C.lessons[lid], step = lid && nextStep(lid);
+  const cn = classNew(), nt = newToday(), st = streak();
+  let h = '<div class="row" style="margin-bottom:12px"><div class="grow"><div style="font-size:22px;font-weight:600">' + esc(new Date().toLocaleDateString(undefined, {weekday: 'long', day: 'numeric', month: 'long'})) + '</div><div class="muted small">' + (st ? st + '-day streak · ' : '') + nt + ' new today of ' + SET.perDay + '</div></div></div>';
+  h += '<button class="primary" id="go" style="width:100%;min-height:58px;font-size:18px;margin-bottom:14px">Start today\'s session</button>';
+  h += '<div class="card"><h2>REVIEW</h2><div class="big">' + (due.length ? due.length + ' due' : 'All caught up') + '</div><div class="muted small">Words, phrases and sentences you\'ve learned, coming back before you forget them.</div>' + (due.length ? '<div style="margin-top:10px"><button id="rev">Review now</button></div>' : '') + '</div>';
+  if (L) {
+    const c = lessonCounts(lid);
+    h += '<div class="card"><h2>TEXTBOOK · ' + esc(lid) + '</h2><div class="bo bo-s">' + esc(L.title ? L.title.bo : '') + '</div><div class="big" style="margin-top:0">' + esc(L.title && L.title.en ? L.title.en : '') + '</div>';
+    h += '<div class="bar" style="margin:6px 0 8px"><i style="width:' + Math.round(100 * STEPS.filter(s => stepDone(lid, s)).length / STEPS.length) + '%"></i></div>';
+    h += L.ready ? '<div class="muted small">Next: ' + esc(STEP_NAMES[step]) + ' · ' + c.learned + ' of ' + c.all + ' items learned</div><div style="margin-top:10px"><button id="cont">Continue</button></div>' : '<div class="muted small">The English for this lesson is still being prepared. You can read it in Tibetan from the Library meanwhile.</div>';
+    h += '</div>';
+  } else h += '<div class="card"><h2>TEXTBOOK</h2><div class="big">Course complete</div></div>';
+  h += '<div class="card"><h2>CLASS</h2><div class="big">' + (cn.length ? cn.length + ' new from class' : 'Class notes all learned') + '</div><div class="muted small">' + (C.classes.length ? 'Latest: ' + esc(fmtDate(C.classes[C.classes.length - 1].date)) + ' · ' + esc(C.classes[C.classes.length - 1].title) : 'No class notes yet.') + '</div>' + (cn.length ? '<div style="margin-top:10px"><button id="cls">Learn class words</button></div>' : '') + '</div>';
+  if (L && L.ready) h += '<div class="card"><h2>READ</h2><div class="big">' + esc(L.dialogue.title && L.dialogue.title.en ? L.dialogue.title.en : 'This lesson\'s conversation') + '</div><div class="muted small">The conversation from ' + esc(lid) + ', Tibetan first, translation a tap away.</div><div style="margin-top:10px"><button id="rd">Read</button></div></div>';
+  v.innerHTML = h;
+  $('#go').onclick = startDay;
+  if ($('#rev')) $('#rev').onclick = () => runReview(dueCards(), () => render());
+  if ($('#cont')) $('#cont').onclick = () => runContinue(() => render());
+  if ($('#cls')) $('#cls').onclick = () => runClass(() => render());
+  if ($('#rd')) $('#rd').onclick = () => openDialogue(lid);
+}
+function startDay() {
+  const after = () => { render(); toast('That\'s today\'s session. Nicely done.'); };
+  const stage3 = () => { if (classNew().length && newToday() < SET.perDay) runClass(after); else after(); };
+  const stage2 = () => { const lid = currentLesson(); if (lid && C.lessons[lid].ready && newToday() < SET.perDay) runContinue(stage3, true); else stage3(); };
+  const due = dueCards(); if (due.length) runReview(due, stage2); else stage2();
+}
+
+/* ---------- card sessions ---------- */
+let SESSION = null;
+function openSession(title) {
+  const el = document.createElement('div'); el.className = 'session';
+  el.innerHTML = '<div class="shead"><button class="ghost" id="sx" aria-label="Close">✕</button><div class="grow" id="st" style="font-weight:600"></div><div class="muted small" id="sp"></div></div><div class="sbody"><div id="sb"></div></div><div class="sfoot" id="sf"></div>';
+  document.body.appendChild(el);
+  const s = {el, title, onClose: null, keys: null, close() { document.removeEventListener('keydown', onKey); el.remove(); SESSION = null; if (this.onClose) this.onClose(); window.scrollTo(0, 0); }};
+  function onKey(e) { if (s.keys) s.keys(e); if (e.key === 'Escape') s.close(); }
+  document.addEventListener('keydown', onKey);
+  el.querySelector('#sx').onclick = () => s.close();
+  el.querySelector('#st').textContent = title;
+  SESSION = s; return s;
+}
+function frontBack(it, dir) {
+  // returns [front html, back html, label]
+  if (it.kind === 'pair') {
+    if (dir === 'r') return ['<div class="bo bo-xl">' + esc(it.ho) + '</div>', '<div class="en-l">' + esc(gloss(it)) + '</div><div class="label">ordinary</div><div class="bo bo-l">' + esc(it.or) + '</div>' + note(it), 'Polite form — what is it, and the ordinary word?'];
+    return ['<div class="en-l">' + esc(gloss(it)) + '</div>', '<div class="label">ordinary</div><div class="bo bo-l">' + esc(it.or) + '</div><div class="label">polite</div><div class="bo bo-l">' + esc(it.ho) + '</div>' + note(it), 'Say both forms out loud'];
+  }
+  if (it.kind === 'grammar') {
+    const ex = (it.examples || []).slice(0, 2).map(e => '<div class="bo bo-s">' + esc(e.bo) + '</div><div class="muted">' + esc(e.en || '') + '</div>').join('');
+    return ['<div class="bo bo-l">' + esc(it.bo) + '</div>', '<div class="en-m">' + esc(it.en || '') + '</div>' + (it.notes ? '<div class="muted ex">' + esc(it.notes) + '</div>' : '') + (ex ? '<div class="ex">' + ex + '</div>' : ''), 'Grammar — what does this pattern do?'];
+  }
+  if (it.kind === 'sentence') {
+    if (dir === 'r') return ['<div class="bo bo-m">' + esc(it.bo) + '</div>', '<div class="en-l">' + esc(gloss(it)) + '</div>' + note(it), 'Read it aloud — what does it mean?'];
+    return ['<div class="en-l">' + esc(gloss(it)) + '</div>', '<div class="bo bo-m">' + esc(it.bo) + '</div>', 'Say it in Tibetan'];
+  }
+  const ex = it.ex ? '<div class="ex"><div class="bo bo-s">' + esc(it.ex) + '</div><div class="muted">' + esc(it.ex_en || '') + '</div></div>' : '';
+  if (dir === 'r') return ['<div class="bo bo-xl">' + esc(it.bo) + '</div>', '<div class="en-l">' + esc(gloss(it)) + '</div>' + note(it) + ex, 'What does it mean?'];
+  return ['<div class="en-l">' + esc(gloss(it)) + '</div>' + (it.ex_en ? '<div class="muted small" style="margin-top:8px">' + esc(it.ex_en) + '</div>' : ''), '<div class="bo bo-xl">' + esc(it.bo) + '</div>' + note(it) + ex, 'Say it in Tibetan'];
+}
+function note(it) { return it.note ? '<div class="muted small ex">' + esc(it.note) + '</div>' : ''; }
+function runReview(cards, done, title) {
+  if (!cards.length) { if (done) done(); return; }
+  const s = openSession(title || 'Review'); const q = cards.slice(0, 150); let n = 0, right = 0; const total = q.length; const seenToday = new Set();
+  s.onClose = () => { if (done) done(); };
+  function next() {
+    if (!q.length) { s.onClose = null; finish(); return; }
+    const cid = q[0], [id, dir] = cid.split('|'), it = ITEMS.get(id);
+    if (!it) { q.shift(); next(); return; }
+    const [f, b, lab] = frontBack(it, dir);
+    s.el.querySelector('#sp').textContent = (total - q.length + 1) + ' / ' + total;
+    s.el.querySelector('#sb').innerHTML = '<div class="label">' + esc(lab) + '</div>' + f + '<div class="answer hide" id="ans">' + b + '</div><div class="faint small" style="margin-top:18px">' + esc(srcName(it)) + '</div>';
+    const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button class="primary" id="showb">Show answer</button>';
+    const reveal = () => { s.el.querySelector('#ans').classList.remove('hide'); foot.innerHTML = '<button class="again" id="b1">Again</button><button class="good" id="b3">Good</button><button class="easy" id="b4">Easy</button>'; foot.querySelector('#b1').onclick = () => grade(1); foot.querySelector('#b3').onclick = () => grade(3); foot.querySelector('#b4').onclick = () => grade(4); s.keys = e => { if (e.key === '1') grade(1); else if (e.key === '2' || e.key === ' ' || e.key === 'Enter') { e.preventDefault(); grade(3); } else if (e.key === '3') grade(4); }; };
+    foot.querySelector('#showb').onclick = reveal;
+    s.keys = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); reveal(); } };
+    function grade(g) {
+      s.keys = null;
+      if (!seenToday.has(cid)) { log({k: 'r', c: cid, g}); seenToday.add(cid); if (g > 1) right++; n++; }
+      q.shift(); if (g === 1) q.splice(Math.min(q.length, 4), 0, cid);
+      next();
+    }
+  }
+  function finish() { s.el.querySelector('#sp').textContent = ''; s.el.querySelector('#sb').innerHTML = '<div style="margin-top:12vh"><div style="font-size:26px;font-weight:600">' + right + ' of ' + n + ' right first time</div><div class="muted" style="margin-top:6px">Anything you missed comes back sooner.</div></div>'; const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button class="primary" id="fin">Continue</button>'; foot.querySelector('#fin').onclick = () => { s.onClose = done; s.close(); }; s.keys = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); s.onClose = done; s.close(); } }; }
+  next();
+}
+function srcName(it) { if (!it.src) return ''; if (it.src.startsWith('class:')) return 'Class · ' + fmtDate(it.src.slice(6)); const L = C.lessons[it.src]; return it.src + (L && L.title && L.title.en ? ' · ' + L.title.en : ''); }
+
+/* learn: study each item, then a quick check; everything checked enters review */
+function runLearn(ids, title, done, opts) {
+  opts = opts || {};
+  const items = ids.map(i => ITEMS.get(i)).filter(Boolean);
+  if (!items.length) { if (done) done(true); return; }
+  const s = openSession(title); let bi = 0; const BATCH = 5; let stopped = false;
+  s.onClose = () => { stopped = true; if (done) done(false); };
+  function batch() {
+    if (bi >= items.length) { s.onClose = null; s.close(); if (done) done(true); return; }
+    if (!opts.ignoreLimit && newToday() >= SET.perDay && bi > 0) { limitScreen(); return; }
+    const group = items.slice(bi, bi + BATCH); let k = 0;
+    function study() {
+      if (k >= group.length) { check(group); return; }
+      const it = group[k];
+      s.el.querySelector('#sp').textContent = 'new ' + (bi + k + 1) + ' / ' + items.length;
+      s.el.querySelector('#sb').innerHTML = studyHtml(it);
+      const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button class="ghost" id="known">I know this</button><button class="primary" id="nx">Next</button>';
+      foot.querySelector('#nx').onclick = () => { k++; study(); };
+      foot.querySelector('#known').onclick = () => { log({k: 'intro', i: it.id}); for (const d of cardDirs(it)) log({k: 'r', c: it.id + '|' + d, g: 4}); group.splice(k, 1); items.splice(bi + k, 1); study(); };
+      s.keys = e => { if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); k++; study(); } };
+    }
+    study();
+  }
+  function check(group) {
+    const q = shuffle(group.map(it => it.id + '|r')); const first = new Set();
+    for (const it of group) log({k: 'intro', i: it.id});
+    function one() {
+      if (!q.length) { bi += BATCH; batch(); return; }
+      const cid = q[0], it = ITEMS.get(cid.split('|')[0]); const [f, b, lab] = frontBack(it, 'r');
+      s.el.querySelector('#sp').textContent = 'check';
+      s.el.querySelector('#sb').innerHTML = '<div class="label">' + esc(lab) + '</div>' + f + '<div class="answer hide" id="ans">' + b + '</div>';
+      const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button class="primary" id="showb">Show answer</button>';
+      const reveal = () => { s.el.querySelector('#ans').classList.remove('hide'); foot.innerHTML = '<button class="again" id="b1">Again</button><button class="good" id="b3">Got it</button>'; foot.querySelector('#b1').onclick = () => grade(1); foot.querySelector('#b3').onclick = () => grade(3); s.keys = e => { if (e.key === '1') grade(1); else if (e.key === '2' || e.key === ' ' || e.key === 'Enter') { e.preventDefault(); grade(3); } }; };
+      foot.querySelector('#showb').onclick = reveal; s.keys = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); reveal(); } };
+      function grade(g) { s.keys = null; if (!first.has(cid)) { first.add(cid); log({k: 'r', c: cid, g}); } q.shift(); if (g === 1) q.push(cid); one(); }
+    }
+    one();
+  }
+  function limitScreen() {
+    s.el.querySelector('#sp').textContent = '';
+    s.el.querySelector('#sb').innerHTML = '<div style="margin-top:12vh"><div style="font-size:24px;font-weight:600">That\'s ' + SET.perDay + ' new today</div><div class="muted" style="margin-top:6px">New items stick better spread over days. You can carry on, or stop here and pick up tomorrow.</div></div>';
+    const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button id="stop">Stop for today</button><button class="primary" id="more">Keep going</button>';
+    foot.querySelector('#stop').onclick = () => { s.onClose = null; s.close(); if (done) done(false); };
+    foot.querySelector('#more').onclick = () => { opts.ignoreLimit = true; batch(); };
+  }
+  batch();
+}
+function studyHtml(it) {
+  if (it.kind === 'pair') return '<div class="label">new · polite and ordinary</div><div class="en-l">' + esc(gloss(it)) + '</div><div class="grid2" style="margin-top:16px;text-align:center"><div><div class="label">ordinary</div><div class="bo bo-l">' + esc(it.or) + '</div></div><div><div class="label">polite</div><div class="bo bo-l">' + esc(it.ho) + '</div></div></div>' + note(it) + '<div class="faint small" style="margin-top:18px">' + esc(srcName(it)) + '</div>';
+  if (it.kind === 'grammar') { const ex = (it.examples || []).map(e => '<div style="margin:10px 0"><div class="bo bo-s">' + esc(e.bo) + '</div><div class="muted">' + esc(e.en || '') + '</div></div>').join(''); return '<div class="label">grammar</div><div class="bo bo-l">' + esc(it.bo) + '</div><div class="en-m" style="margin-top:6px">' + esc(it.en || '') + '</div>' + (it.notes ? '<div class="muted ex">' + esc(it.notes) + '</div>' : '') + '<div class="ex">' + ex + '</div>'; }
+  if (it.kind === 'sentence') return '<div class="label">new sentence · read it aloud twice</div><div class="bo bo-m">' + esc(it.bo) + '</div><div class="en-l" style="margin-top:10px">' + esc(gloss(it)) + '</div>' + note(it) + '<div class="faint small" style="margin-top:18px">' + esc(srcName(it)) + '</div>';
+  const ex = it.ex ? '<div class="ex"><div class="label">example · read it aloud</div><div class="bo bo-s">' + esc(it.ex) + '</div><div class="muted">' + esc(it.ex_en || '') + '</div></div>' : '';
+  return '<div class="label">new ' + (it.kind === 'phrase' ? 'phrase' : 'word') + '</div><div class="bo bo-xl">' + esc(it.bo) + '</div><div class="en-l">' + esc(gloss(it)) + '</div>' + note(it) + ex + '<div class="faint small" style="margin-top:18px">' + esc(srcName(it)) + '</div>';
+}
+
+/* ---------- the textbook path ---------- */
+function runContinue(done, chain) {
+  const lid = currentLesson(); if (!lid) { if (done) done(); return; }
+  const L = C.lessons[lid]; if (!L.ready) { toast('This lesson\'s English is still being prepared'); if (done) done(); return; }
+  const step = nextStep(lid), g = LESSON_ITEMS[lid];
+  const after = ok => { if (ok) { log({k: 'step', l: lid, s: step}); if (!nextStep(lid)) { log({k: 'lesson', l: lid}); toast(lid + ' complete — next lesson unlocked'); } if (chain && newToday() < SET.perDay && currentLesson() === lid) { runContinue(done, chain); return; } } if (done) done(); };
+  if (step === 'words') runLearn(g.words.filter(i => !P.intro.has(i)), lid + ' · New words', after);
+  else if (step === 'phrases') runLearn(g.phrases.filter(i => !P.intro.has(i)), lid + ' · Everyday phrases', after);
+  else if (step === 'grammar') runLearn(g.grammar.filter(i => !P.intro.has(i)), lid + ' · Grammar', after, {ignoreLimit: true});
+  else if (step === 'conversation') openDialogue(lid, () => after(true));
+  else if (done) done();
+}
+function runClass(done) { const ids = classNew(); runLearn(ids, 'Class words', () => { if (done) done(); }); }
+
+/* ---------- reading ---------- */
+let READER_OPEN = false;
+function openReader(title, lines, onFinish, opts) {
+  opts = opts || {};
+  const s = openSession(title); READER_OPEN = true;
+  const prev = s.close.bind(s); s.close = () => { READER_OPEN = false; prev(); };
+  let h = '<div class="reader" id="rdr" style="text-align:left">';
+  if (opts.intro) h += '<div class="muted" style="margin-bottom:10px">' + opts.intro + '</div>';
+  lines.forEach((l, i) => { h += '<div class="ln" data-i="' + i + '">' + (l.who ? '<div class="who">' + esc(l.who) + '</div>' : '') + '<div class="bo bo-m">' + esc(l.bo) + '</div><div class="tr">' + esc(l.tr || '—') + '</div></div>'; });
+  if (opts.tail) h += opts.tail;
+  h += '</div>';
+  s.el.querySelector('#sb').innerHTML = h;
+  s.el.querySelector('#rdr').onclick = e => { const ln = e.target.closest('.ln'); if (ln) ln.classList.toggle('open'); };
+  const foot = s.el.querySelector('#sf');
+  foot.innerHTML = '<button id="allb">Show all translations</button><button class="primary" id="finb">' + esc(opts.finishLabel || 'Finished reading') + '</button>';
+  let all = false;
+  foot.querySelector('#allb').onclick = () => { all = !all; s.el.querySelector('#rdr').classList.toggle('all', all); foot.querySelector('#allb').textContent = all ? 'Hide translations' : 'Show all translations'; };
+  foot.querySelector('#finb').onclick = () => { s.close(); if (onFinish) onFinish(); };
+}
+function closeReader() { if (READER_OPEN && SESSION) SESSION.close(); }
+function trOf(x) { if (SET.gloss === 'zh' && x.zh) return x.zh; return x.en || x.zh || ''; }
+function openDialogue(lid, onFinish) {
+  const L = C.lessons[lid];
+  const lines = L.dialogue.turns.map(t => ({who: t.who, bo: t.bo, tr: t.en}));
+  let tail = '';
+  if (L.proverb && L.proverb.length) tail += '<div class="card" style="margin-top:16px"><h2>PROVERB</h2>' + L.proverb.map(p => '<div class="bo bo-s">' + esc(p.bo) + '</div><div class="muted">' + esc(p.literal || '') + '</div><div class="small faint">' + esc(p.meaning || '') + '</div>').join('') + '</div>';
+  if (L.talk && L.talk.length) tail += '<div class="card"><h2>TALK ABOUT IT · ANSWER OUT LOUD</h2>' + L.talk.map(q => '<div class="bo bo-s">' + esc(q.bo) + '</div><div class="muted">' + esc(q.en || '') + '</div>').join('') + '</div>';
+  openReader(lid + ' · ' + (L.dialogue.title && L.dialogue.title.en ? L.dialogue.title.en : 'Conversation'), lines, () => { log({k: 'read', x: lid + ':dialogue'}); if (onFinish) onFinish(); }, {intro: 'Read each line aloud. Tap a line only if you can\'t work it out.', tail});
+}
+function openStory(level, st) {
+  const lines = st.sentences.map(x => ({bo: x.bo, tr: x.en}));
+  openReader(st.title.en || st.title.bo, lines, () => log({k: 'read', x: st.id}), {intro: '<span class="bo bo-s">' + esc(st.title.bo) + '</span>' + (st.sentences.some(x => x.en) ? '' : '<div class="small faint">English not added yet — Tibetan only.</div>')});
+}
+
+/* ---------- Practice ---------- */
+const PR = {src: 'due', what: 'mixed', dir: 'r', n: 20};
+function renderPractice(v) {
+  $('#title').textContent = 'Practice';
+  const lid = currentLesson();
+  const srcs = [['due', 'Due now'], ['current', 'This lesson' + (lid ? ' (' + lid + ')' : '')], ['class', 'Class notes'], ['learned', 'Everything learned'], ['done', 'Finished lessons']];
+  const whats = [['mixed', 'Everything'], ['word', 'Words & phrases'], ['pair', 'Polite pairs'], ['sentence', 'Sentences'], ['grammar', 'Grammar']];
+  const dirs = [['r', 'Tibetan → meaning'], ['p', 'Meaning → Tibetan']];
+  const seg = (name, opts, cur) => '<div class="seg" data-k="' + name + '">' + opts.map(o => '<button data-v="' + o[0] + '"' + (String(cur) === o[0] ? ' class="on"' : '') + '>' + esc(o[1]) + '</button>').join('') + '</div>';
+  let h = '<div class="card"><h2>FROM</h2>' + seg('src', srcs, PR.src) + '</div>';
+  h += '<div class="card"><h2>WHAT</h2>' + seg('what', whats, PR.what) + '</div>';
+  h += '<div class="card"><h2>DIRECTION</h2>' + seg('dir', dirs, PR.dir) + '<div style="margin-top:10px"><h2>MEANING IN</h2>' + seg('gloss', [['en', 'English'], ['zh', '中文'], ['both', 'Both']], SET.gloss) + '</div></div>';
+  h += '<div class="card"><h2>HOW MANY</h2>' + seg('n', [['10', '10'], ['20', '20'], ['50', '50'], ['999', 'All']], PR.n) + '</div>';
+  const pool = practicePool(); h += '<button class="primary" id="pgo" style="width:100%;min-height:56px">Start · ' + Math.min(pool.length, PR.n) + ' cards</button>';
+  if (!pool.length) h += '<p class="muted center">Nothing here yet — learn some items first.</p>';
+  v.innerHTML = h;
+  v.querySelectorAll('.seg').forEach(sg => sg.onclick = e => { const b = e.target.closest('button'); if (!b) return; const k = sg.dataset.k; if (k === 'gloss') { SET.gloss = b.dataset.v; saveSet(); } else PR[k] = k === 'n' ? +b.dataset.v : b.dataset.v; render(); });
+  $('#pgo').onclick = () => { const p = shuffle(practicePool()).slice(0, PR.n); if (!p.length) return; runReview(p, () => render(), 'Practice'); };
+}
+function practicePool() {
+  let ids;
+  if (PR.src === 'due') return dueCards().filter(c => kindOk(ITEMS.get(c.split('|')[0])) && (PR.what === 'mixed' || c.endsWith('|' + PR.dir) || !cardDirs(ITEMS.get(c.split('|')[0])).includes(PR.dir)));
+  const lid = currentLesson();
+  if (PR.src === 'current') { const g = LESSON_ITEMS[lid] || {words: [], phrases: [], grammar: []}; ids = g.words.concat(g.phrases, g.grammar).filter(i => P.intro.has(i)); }
+  else if (PR.src === 'class') ids = C.classes.flatMap(c => c.items.map(x => x.id));
+  else if (PR.src === 'done') ids = [...P.done].flatMap(l => { const g = LESSON_ITEMS[l]; return g ? g.words.concat(g.phrases, g.grammar) : []; });
+  else ids = [...P.intro.keys()];
+  ids = ids.filter(i => ITEMS.has(i) && kindOk(ITEMS.get(i)));
+  return ids.map(i => { const it = ITEMS.get(i); const d = cardDirs(it).includes(PR.dir) ? PR.dir : 'r'; return i + '|' + d; });
+}
+function kindOk(it) { if (!it) return false; if (PR.what === 'mixed') return true; if (PR.what === 'word') return it.kind === 'word' || it.kind === 'phrase'; return it.kind === PR.what; }
+
+/* ---------- Read ---------- */
+function renderRead(v) {
+  $('#title').textContent = 'Read';
+  const lid = currentLesson();
+  let h = '';
+  if (lid && C.lessons[lid].ready) h += '<div class="card"><h2>THIS LESSON</h2><div class="big">' + esc(C.lessons[lid].dialogue.title && C.lessons[lid].dialogue.title.en || lid) + '</div><button data-dlg="' + lid + '">Read the conversation</button></div>';
+  const doneL = C.course.filter(l => P.done.has(l) || P.skipped.has(l)).filter(l => C.lessons[l].ready);
+  if (doneL.length) h += '<div class="card"><h2>CONVERSATIONS YOU\'VE STUDIED</h2><div class="list">' + doneL.map(l => '<div class="it row"><div class="grow"><div class="small faint">' + l + '</div><div>' + esc(C.lessons[l].dialogue.title && C.lessons[l].dialogue.title.en || '') + '</div></div><button data-dlg="' + l + '">Read</button></div>').join('') + '</div></div>';
+  if (C.classes.length) h += '<div class="card"><h2>CLASS SENTENCES</h2><div class="list">' + C.classes.slice().reverse().filter(c => c.items.some(x => x.kind === 'sentence')).map(c => '<div class="it row"><div class="grow">' + esc(fmtDate(c.date)) + ' · <span class="muted">' + c.items.filter(x => x.kind === 'sentence').length + ' sentences</span></div><button data-cls="' + c.date + '">Read</button></div>').join('') + '</div></div>';
+  for (const lv of Object.keys(C.readers)) {
+    const rs = C.readers[lv];
+    h += '<div class="card"><h2>STORIES · ' + lv + '</h2><div class="list">' + rs.map((st, i) => '<div class="it row"><div class="grow"><div class="bo bo-s">' + esc(st.title.bo) + '</div><div class="muted small">' + esc(st.title.en || 'Tibetan only for now') + (P.read.has(st.id) ? ' · read' : '') + '</div></div><button data-story="' + lv + '|' + i + '">Read</button></div>').join('') + '</div></div>';
+  }
+  v.innerHTML = h;
+  v.querySelectorAll('[data-dlg]').forEach(b => b.onclick = () => openDialogue(b.dataset.dlg, () => render()));
+  v.querySelectorAll('[data-cls]').forEach(b => b.onclick = () => { const c = C.classes.find(x => x.date === b.dataset.cls); openReader('Class · ' + fmtDate(c.date), c.items.filter(x => x.kind === 'sentence').map(x => ({bo: x.bo, tr: trOf(x)})), () => log({k: 'read', x: 'class:' + c.date})); });
+  v.querySelectorAll('[data-story]').forEach(b => b.onclick = () => { const [lv, i] = b.dataset.story.split('|'); openStory(lv, C.readers[lv][+i]); });
+}
+
+/* ---------- Library ---------- */
+let DETAIL = null;
+function renderLibrary(v) {
+  if (DETAIL) { DETAIL(v); return; }
+  $('#title').textContent = 'Library';
+  const cur = currentLesson();
+  let h = '<div class="card"><h2>YOUR CLASS NOTES</h2><div class="list">';
+  h += C.classes.slice().reverse().map(c => { const n = c.items.length, l = c.items.filter(x => P.intro.has(x.id)).length; return '<div class="it row"><div class="grow"><div>' + esc(fmtDate(c.date)) + '</div><div class="muted small">' + esc(c.title) + '</div></div><span class="pill' + (l === n ? ' ok' : '') + '">' + l + '/' + n + '</span><button data-class="' + c.date + '">Open</button></div>'; }).join('') || '<div class="muted">None yet.</div>';
+  h += '</div><div id="inbox"></div><div style="margin-top:10px"><button id="paste">Paste notes from a class</button></div></div>';
+  const books = {}; C.course.forEach(l => { const b = C.lessons[l].book; (books[b] = books[b] || []).push(l); });
+  for (const b of Object.keys(books)) {
+    h += '<div class="card"><h2>' + esc(b.toUpperCase()) + '</h2><div class="list">';
+    h += books[b].map(l => { const L = C.lessons[l], st = P.done.has(l) ? 'done' : P.skipped.has(l) ? 'skipped' : l === cur ? 'now' : 'locked'; const c = lessonCounts(l); return '<div class="it row"><div class="grow"><div class="small faint">' + l + (L.ready ? '' : ' · English coming') + '</div><div class="bo bo-s">' + esc(L.title ? L.title.bo : '') + '</div><div class="muted small">' + esc(L.title && L.title.en || '') + '</div></div><span class="pill ' + (st === 'done' || st === 'skipped' ? 'ok' : st === 'now' ? 'cur' : 'lock') + '">' + (st === 'done' ? '✓ done' : st === 'skipped' ? '✓ skipped' : st === 'now' ? '▶ now · ' + c.learned + '/' + c.all : 'locked') + '</span><button data-lesson="' + l + '">Open</button></div>'; }).join('');
+    h += '</div></div>';
+  }
+  if (C.extra.length) h += '<div class="card"><h2>A1 · OPTIONAL</h2><div class="muted small">The level before. Open any lesson to read it.</div><div class="list">' + C.extra.map(l => '<div class="it row"><div class="grow"><div class="small faint">' + l + '</div><div class="bo bo-s">' + esc(C.lessons[l].title ? C.lessons[l].title.bo : '') + '</div></div><button data-lesson="' + l + '">Open</button></div>').join('') + '</div></div>';
+  v.innerHTML = h;
+  v.querySelectorAll('[data-class]').forEach(b => b.onclick = () => { DETAIL = classDetail(b.dataset.class); render(); });
+  v.querySelectorAll('[data-lesson]').forEach(b => b.onclick = () => { DETAIL = lessonDetail(b.dataset.lesson); render(); window.scrollTo(0, 0); });
+  $('#paste').onclick = pasteNotes;
+  showInbox();
+}
+async function showInbox() {
+  const files = (await IO.list('inbox')).filter(f => f.endsWith('.txt')); const el = $('#inbox'); if (!el || !files.length) return;
+  let h = '<div class="label">Pasted notes waiting to be made into cards</div>';
+  for (const f of files) { const t = await IO.read('inbox/' + f); h += '<details style="margin:6px 0"><summary class="muted small">' + esc(f) + '</summary><div class="bo bo-s" style="white-space:pre-wrap">' + esc(t || '') + '</div></details>'; }
+  el.innerHTML = h;
+}
+function pasteNotes() {
+  const s = openSession('Paste class notes');
+  s.el.querySelector('#sb').innerHTML = '<div style="text-align:left"><p class="muted">Paste your notes from today\'s class. They are saved in the inbox/ folder and readable in the Library until they are made into class cards.</p><textarea id="pt" placeholder="Paste here"></textarea><div class="small" id="perr" style="color:var(--bad)"></div></div>';
+  const foot = s.el.querySelector('#sf'); foot.innerHTML = '<button class="primary" id="psave">Save</button>';
+  const ta = s.el.querySelector('#pt'); ta.oninput = () => { s.el.querySelector('#perr').textContent = ''; };
+  foot.querySelector('#psave').onclick = async () => { const t = ta.value.trim(); if (!t) { s.el.querySelector('#perr').textContent = 'Paste something first.'; return; } const d = new Date(); const stamp = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') + '_' + String(d.getHours()).padStart(2, '0') + String(d.getMinutes()).padStart(2, '0'); const ok = await IO.write('inbox/' + stamp + '-' + DEVICE + '.txt', t); if (ok) { toast('Saved to the inbox.'); s.close(); render(); } else s.el.querySelector('#perr').textContent = 'Could not save — is the folder set?'; };
+}
+function classDetail(date) {
+  return v => {
+    const c = C.classes.find(x => x.date === date); $('#title').textContent = fmtDate(date);
+    let h = '<button class="ghost" id="back">← Library</button><div class="card" style="margin-top:10px"><h2>CLASS · ' + esc(fmtDate(date).toUpperCase()) + '</h2><div class="big">' + esc(c.title) + '</div><div class="row"><button class="primary" id="learnc">Learn the new ones</button><button id="drillc">Drill all of them</button></div></div>';
+    const by = k => c.items.filter(x => x.kind === k);
+    const pairs = by('pair'); if (pairs.length) h += '<div class="card"><h2>POLITE AND ORDINARY</h2><div class="list">' + pairs.map(x => '<div class="it"><div class="muted">' + esc(gloss(x)) + '</div><div class="grid2"><div class="bo bo-s">' + esc(x.or) + '</div><div class="bo bo-s">' + esc(x.ho) + '</div></div></div>').join('') + '</div></div>';
+    const words = c.items.filter(x => x.kind === 'word' || x.kind === 'grammar'); if (words.length) h += '<div class="card"><h2>WORDS</h2><div class="list">' + words.map(x => '<div class="it grid2"><div class="bo bo-s">' + esc(x.bo) + '</div><div>' + esc(gloss(x)) + (x.note ? '<div class="small faint">' + esc(x.note) + '</div>' : '') + '</div></div>').join('') + '</div></div>';
+    const sents = by('sentence'); if (sents.length) h += '<div class="card"><h2>SENTENCES</h2><div class="list">' + sents.map(x => '<div class="it"><div class="bo bo-s">' + esc(x.bo) + '</div><div class="muted">' + esc(gloss(x)) + '</div></div>').join('') + '</div></div>';
+    v.innerHTML = h;
+    $('#back').onclick = () => { DETAIL = null; render(); };
+    $('#learnc').onclick = () => runLearn(c.items.map(x => x.id).filter(i => !P.intro.has(i)), 'Class · ' + fmtDate(date), () => render(), {ignoreLimit: true});
+    $('#drillc').onclick = () => runReview(shuffle(c.items.map(x => x.id + '|' + (cardDirs(x)[0]))), () => render(), 'Class · ' + fmtDate(date));
+  };
+}
+function lessonDetail(lid) {
+  return v => {
+    const L = C.lessons[lid], cur = currentLesson(); $('#title').textContent = lid;
+    const locked = !(P.done.has(lid) || P.skipped.has(lid) || lid === cur) && C.course.includes(lid);
+    let h = '<button class="ghost" id="back">← Library</button><div class="card" style="margin-top:10px"><h2>' + esc(lid + ' · ' + L.book.toUpperCase()) + ' · PAGES ' + L.pages[0] + '–' + L.pages[1] + '</h2><div class="bo bo-m">' + esc(L.title ? L.title.bo : '') + '</div><div class="big">' + esc(L.title && L.title.en || '') + '</div><div class="muted small">' + esc(L.topic ? (L.topic.en || L.topic.bo) : '') + '</div>';
+    if (locked) h += '<div class="muted" style="margin-top:8px">Locked: the textbook path goes in order. If you\'ve already covered it with your teacher, you can skip ahead — the words of the lessons you skip go into review as already known.</div><button id="skip" style="margin-top:8px">Skip ahead to here</button>';
+    if (lid === cur && L.ready) h += '<div style="margin-top:8px"><button class="primary" id="cont2">Continue this lesson</button></div>';
+    h += '</div>';
+    if (L.vocab.length) h += '<div class="card"><h2>NEW WORDS</h2><div class="list">' + L.vocab.map(x => '<div class="it"><div class="grid2"><div class="bo bo-m">' + esc(x.bo) + '</div><div>' + esc(gloss(x)) + '</div></div>' + (x.ex ? '<div class="bo bo-s faint" style="color:var(--muted)">' + esc(x.ex) + '</div><div class="small faint">' + esc(x.ex_en || '') + '</div>' : '') + '</div>').join('') + '</div></div>';
+    if (L.phrases.length) h += '<div class="card"><h2>EVERYDAY PHRASES</h2><div class="list">' + L.phrases.map(x => '<div class="it grid2"><div class="bo bo-s">' + esc(x.bo) + '</div><div>' + esc(gloss(x)) + '</div></div>').join('') + '</div></div>';
+    if (L.grammar.patterns.length) h += '<div class="card"><h2>GRAMMAR</h2><div class="bo bo-m">' + esc(L.grammar.patterns.join(' · ')) + '</div><div class="big" style="font-size:17px">' + esc(L.grammar.en || '') + '</div><div class="muted">' + esc(L.grammar.notes || '') + '</div><div class="list" style="margin-top:8px">' + L.grammar.examples.concat(L.patterns).map(e => '<div class="it"><div class="bo bo-s">' + esc(e.bo) + '</div><div class="muted small">' + esc(e.en || '') + '</div></div>').join('') + '</div></div>';
+    if (L.dialogue.turns.length) h += '<div class="card"><h2>CONVERSATION</h2><div class="big" style="font-size:17px">' + esc(L.dialogue.title && L.dialogue.title.en || '') + '</div><button id="dlg">Read it</button></div>';
+    v.innerHTML = h;
+    $('#back').onclick = () => { DETAIL = null; render(); };
+    if ($('#dlg')) $('#dlg').onclick = () => openDialogue(lid, () => render());
+    if ($('#cont2')) $('#cont2').onclick = () => runContinue(() => { DETAIL = null; render(); });
+    if ($('#skip')) $('#skip').onclick = () => skipTo(lid);
+  };
+}
+function skipTo(lid) {
+  const i = C.course.indexOf(lid), cur = C.course.indexOf(currentLesson());
+  const skip = C.course.slice(cur, i).filter(l => !P.done.has(l));
+  if (!confirm('Mark ' + skip.join(', ') + ' as done? Their words go into review as already known.')) return;
+  for (const l of skip) {
+    const g = LESSON_ITEMS[l]; if (g && C.lessons[l].ready) for (const id of g.words.concat(g.phrases, g.grammar)) if (!P.intro.has(id)) { const it = ITEMS.get(id); log({k: 'intro', i: id}); for (const d of cardDirs(it)) log({k: 'r', c: id + '|' + d, g: 4}); }
+    log({k: 'skip', l});
+  }
+  DETAIL = null; show('today');
+}
+
+/* ---------- Settings ---------- */
+function renderSettings(v) {
+  $('#title').textContent = 'Settings';
+  const seg = (name, opts, cur) => '<div class="seg" data-k="' + name + '">' + opts.map(o => '<button data-v="' + o[0] + '"' + (String(cur) === o[0] ? ' class="on"' : '') + '>' + esc(o[1]) + '</button>').join('') + '</div>';
+  let h = '<div class="card"><h2>MEANINGS IN</h2>' + seg('gloss', [['en', 'English'], ['zh', '中文 where there is one'], ['both', 'Both']], SET.gloss) + '</div>';
+  h += '<div class="card"><h2>NEW ITEMS PER DAY</h2>' + seg('perDay', [['10', '10'], ['15', '15'], ['20', '20'], ['30', '30'], ['50', '50']], SET.perDay) + '<div class="muted small" style="margin-top:6px">Textbook and class together. You can always choose to keep going.</div></div>';
+  h += '<div class="card"><h2>TEXT SIZE</h2>' + seg('scale', [['0.85', 'Smaller'], ['1', 'Normal'], ['1.2', 'Large'], ['1.4', 'Larger']], SET.scale) + '</div>';
+  h += '<div class="card"><h2>THEME</h2>' + seg('theme', [['auto', 'Automatic'], ['dark', 'Dark'], ['light', 'Light']], SET.theme) + '</div>';
+  const others = [...new Set(EV.map(e => e.d))].filter(d => d && d !== DEVICE);
+  const last = d => { const t = Math.max(...EV.filter(e => e.d === d).map(e => e.t)); return new Date(t).toLocaleString(); };
+  h += '<div class="card"><h2>THIS DEVICE</h2><div>' + esc(DEVICE) + ' · ' + (IO.kind === 'phone' ? 'phone app' : IO.kind === 'server' ? 'Mac' : 'browser (progress not saved)') + '</div><div class="muted small">Content built ' + esc(C.built.replace('T', ' ')) + ' · ' + EV.length + ' progress entries</div>' + others.map(d => '<div class="muted small">Last from ' + esc(d) + ': ' + esc(last(d)) + '</div>').join('') + '<div style="margin-top:10px" class="row"><button id="reload">Reload content and progress</button>' + (IO.kind === 'phone' && window.TibetanBridge.pickFolder ? '<button id="pick">Change folder</button>' : '') + '</div></div>';
+  v.innerHTML = h;
+  v.querySelectorAll('.seg').forEach(sg => sg.onclick = e => { const b = e.target.closest('button'); if (!b) return; const k = sg.dataset.k; SET[k] = (k === 'perDay' || k === 'scale') ? +b.dataset.v : b.dataset.v; saveSet(); render(); });
+  $('#reload').onclick = () => (IO.kind === 'phone' && window.TibetanBridge.reload) ? window.TibetanBridge.reload() : location.reload();
+  if ($('#pick')) $('#pick').onclick = () => window.TibetanBridge.pickFolder();
+}
+
+/* ---------- boot ---------- */
+(async function boot() {
+  try {
+    DEVICE = (await IO.device()) || 'browser';
+    const txt = await IO.read('app/content.json');
+    if (!txt) { $('#view').innerHTML = '<div class="card"><div class="big">No lesson data found</div><div class="muted">' + (IO.kind === 'phone' ? 'Choose your Tibetan data folder when the app asks.' : 'Open this through the study server on the Mac.') + '</div></div>'; return; }
+    C = JSON.parse(txt);
+    buildItems();
+    await loadProgress();
+    render();
+  } catch (e) { $('#view').innerHTML = '<div class="card"><div class="big">Something went wrong</div><pre class="small" style="white-space:pre-wrap">' + esc(e && e.stack || e) + '</pre></div>'; }
+})();
+</script>
+</body>
+</html>

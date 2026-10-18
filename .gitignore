@@ -1,0 +1,8 @@
+extract/work/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+demo/app/
+demo/progress/
+demo/inbox/

@@ -1,0 +1,5 @@
+app/build/
+.gradle/
+build/
+app/src/main/assets/index.html
+dist/

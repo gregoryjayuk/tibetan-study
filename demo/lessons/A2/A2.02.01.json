@@ -1,0 +1,205 @@
+{
+ "schema": 1,
+ "id": "A2.02.01",
+ "level": "A2",
+ "book": "Demo book",
+ "pdf": null,
+ "pages": [
+  5,
+  6
+ ],
+ "topic": {
+  "bo": "ཁྱིམ་ཚང་།",
+  "en": "Home and family"
+ },
+ "title": {
+  "bo": "ནང་མི།",
+  "en": "Family"
+ },
+ "goals": {
+  "talk": null,
+  "grammar": null
+ },
+ "vocab": [
+  {
+   "n": 1,
+   "bo": "ཨ་མ་",
+   "en": "mother",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "妈妈"
+  },
+  {
+   "n": 2,
+   "bo": "ཨ་ཕ་",
+   "en": "father",
+   "ex": "",
+   "ex_en": null,
+   "note": "Polite: པ་ལགས་",
+   "zh": "爸爸"
+  },
+  {
+   "n": 3,
+   "bo": "ཨ་ཅག་",
+   "en": "elder sister",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "姐姐"
+  },
+  {
+   "n": 4,
+   "bo": "ཇོ་ལགས་",
+   "en": "elder brother",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "哥哥"
+  },
+  {
+   "n": 5,
+   "bo": "ནུ་བོ་",
+   "en": "younger brother",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "弟弟"
+  },
+  {
+   "n": 6,
+   "bo": "ནུ་མོ་",
+   "en": "younger sister",
+   "ex": "ང་ལ་ནུ་མོ་གཉིས་ཡོད།",
+   "ex_en": "I have two younger sisters.",
+   "note": null,
+   "zh": "妹妹"
+  },
+  {
+   "n": 7,
+   "bo": "ནང་མི་",
+   "en": "family (members)",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "家人"
+  }
+ ],
+ "expressions": [
+  {
+   "n": 1,
+   "bo": "ཁྱེད་རང་ནང་ལ་མི་ག་ཚོད་ཡོད།",
+   "en": "How many people are in your family?",
+   "note": null,
+   "zh": "您家有几口人？"
+  },
+  {
+   "n": 2,
+   "bo": "ཡག་པོ་འདུག",
+   "en": "That's nice.",
+   "note": null,
+   "zh": "真好"
+  }
+ ],
+ "grammar": {
+  "patterns": [
+   "… ལ་ … ཡོད། / མེད།"
+  ],
+  "pattern_en": "someone has … / doesn't have …",
+  "notes": "ཡོད་ and མེད་ say that something exists, or that someone has it. The owner takes ལ་.",
+  "examples": [
+   {
+    "bo": "ང་ལ་ནུ་མོ་གཅིག་ཡོད།",
+    "en": "I have one younger sister."
+   },
+   {
+    "bo": "ང་ལ་ཇོ་ལགས་མེད།",
+    "en": "I don't have an elder brother."
+   }
+  ]
+ },
+ "dialogue": {
+  "title": {
+   "bo": "ཁྱེད་རང་གི་ནང་མི།",
+   "en": "Your family"
+  },
+  "turns": [
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ཁྱེད་རང་ནང་ལ་མི་ག་ཚོད་ཡོད།",
+    "en": "How many people are in your family?"
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ང་ཚོ་ནང་ལ་མི་ལྔ་ཡོད།",
+    "en": "There are five of us."
+   },
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ཁྱེད་རང་ལ་ཨ་ཅག་ཡོད་པས།",
+    "en": "Do you have an elder sister?"
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ཡོད། ང་ལ་ཨ་ཅག་གཅིག་དང་ནུ་བོ་གཅིག་ཡོད།",
+    "en": "Yes. I have one elder sister and one younger brother."
+   },
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ང་ལ་ཨ་ཅག་མེད། ནུ་མོ་གཉིས་ཡོད།",
+    "en": "I don't have an elder sister. I have two younger sisters."
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ཡག་པོ་འདུག",
+    "en": "That's nice."
+   }
+  ]
+ },
+ "proverb": [],
+ "culture": [],
+ "exercises": {
+  "unscramble": {
+   "scene": null,
+   "items": []
+  },
+  "passage": null,
+  "gaps": {
+   "example": null,
+   "sets": [
+    {
+     "bank": [
+      "མེད",
+      "ཡོད"
+     ],
+     "items": [
+      {
+       "bo": "ང་ལ་ཨ་ཅག་གཅིག་ ＿＿ །",
+       "fill": "ཡོད",
+       "en": "I have one elder sister.",
+       "unsure": false
+      },
+      {
+       "bo": "ང་ལ་ནུ་བོ་ ＿＿ །",
+       "fill": "མེད",
+       "en": "I don't have a younger brother.",
+       "unsure": false
+      }
+     ]
+    }
+   ]
+  },
+  "talk": [
+   {
+    "bo": "ཁྱེད་རང་ལ་ཨ་ཅག་ཡོད་པས།",
+    "en": "Do you have an elder sister?"
+   }
+  ]
+ },
+ "flags": [],
+ "status": {
+  "extracted": null,
+  "translated": "2026-10-18",
+  "reviewed": null
+ }
+}

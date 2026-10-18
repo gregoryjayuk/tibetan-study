@@ -1,0 +1,68 @@
+[
+ {
+  "id": "A2-R01",
+  "level": "A2",
+  "n": 1,
+  "title": {
+   "bo": "ངའི་ཉིན་མོ།",
+   "en": "My day"
+  },
+  "sentences": [
+   {
+    "bo": "ང་ཞོགས་པ་ཆུ་ཚོད་བདུན་ལ་ལང་གི་ཡོད།",
+    "en": "I get up at seven in the morning."
+   },
+   {
+    "bo": "ང་ཇ་འཐུང་གི་ཡོད།",
+    "en": "I drink tea."
+   },
+   {
+    "bo": "དེ་ནས་ང་སློབ་གྲྭར་འགྲོ་གི་ཡོད།",
+    "en": "Then I go to school."
+   },
+   {
+    "bo": "སློབ་གྲྭར་ང་ཚོས་བོད་སྐད་སློབ་སྦྱོང་བྱེད་ཀྱི་ཡོད།",
+    "en": "At school we study Tibetan."
+   },
+   {
+    "bo": "དགོང་དྲོ་ང་ནང་ལ་ཡོང་གི་ཡོད།",
+    "en": "In the evening I come home."
+   },
+   {
+    "bo": "ང་ཨ་མ་དང་མཉམ་དུ་ཁ་ལག་ཟ་གི་ཡོད།",
+    "en": "I eat dinner with my mother."
+   }
+  ]
+ },
+ {
+  "id": "A2-R02",
+  "level": "A2",
+  "n": 2,
+  "title": {
+   "bo": "ཚོང་ར།",
+   "en": "The market"
+  },
+  "sentences": [
+   {
+    "bo": "དེ་རིང་གཟའ་ཉི་མ་རེད།",
+    "en": "Today is Sunday."
+   },
+   {
+    "bo": "ང་དང་ནུ་མོ་ཚོང་རར་འགྲོ་གི་ཡོད།",
+    "en": "My little sister and I are going to the market."
+   },
+   {
+    "bo": "ཚོང་ར་ལ་ཤིང་ཏོག་མང་པོ་འདུག",
+    "en": "There is a lot of fruit at the market."
+   },
+   {
+    "bo": "ཀུ་ཤུ་ཡག་པོ་འདུག",
+    "en": "The apples look good."
+   },
+   {
+    "bo": "ང་ཚོས་ཀུ་ཤུ་ལྔ་ཉོས་པ་ཡིན།",
+    "en": "We bought five apples."
+   }
+  ]
+ }
+]

@@ -1,0 +1,240 @@
+{
+ "schema": 1,
+ "id": "A2.01.01",
+ "level": "A2",
+ "book": "Demo book",
+ "pdf": null,
+ "pages": [
+  1,
+  2
+ ],
+ "topic": {
+  "bo": "ངོ་སྤྲོད།",
+  "en": "Meeting people"
+ },
+ "title": {
+  "bo": "བཀྲ་ཤིས་བདེ་ལེགས།",
+  "en": "Greetings"
+ },
+ "goals": {
+  "talk": null,
+  "grammar": null
+ },
+ "vocab": [
+  {
+   "n": 1,
+   "bo": "བཀྲ་ཤིས་བདེ་ལེགས།",
+   "en": "hello",
+   "ex": "བཀྲ་ཤིས་བདེ་ལེགས། ཁྱེད་རང་སྐུ་གཟུགས་བདེ་པོ་ཡིན་པས།",
+   "ex_en": "Hello! Are you well?",
+   "note": "Literally \"good fortune and well-being\"; said at any time of day.",
+   "zh": "你好"
+  },
+  {
+   "n": 2,
+   "bo": "ཐུགས་རྗེ་ཆེ།",
+   "en": "thank you",
+   "ex": "ཇ་ཞིམ་པོ་འདུག ཐུགས་རྗེ་ཆེ།",
+   "ex_en": "The tea is delicious, thank you.",
+   "note": null,
+   "zh": "谢谢"
+  },
+  {
+   "n": 3,
+   "bo": "ཁྱེད་རང་",
+   "en": "you (polite)",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "您"
+  },
+  {
+   "n": 4,
+   "bo": "མིང་",
+   "en": "name",
+   "ex": "ངའི་མིང་ལ་བཀྲ་ཤིས་ཟེར།",
+   "ex_en": "My name is Tashi.",
+   "note": "Polite form: མཚན་",
+   "zh": "名字"
+  },
+  {
+   "n": 5,
+   "bo": "བདེ་པོ་",
+   "en": "well, fine",
+   "ex": "ང་བདེ་པོ་ཡིན།",
+   "ex_en": "I am well.",
+   "note": null,
+   "zh": "好"
+  },
+  {
+   "n": 6,
+   "bo": "ག་ལེར་ཕེབས།",
+   "en": "goodbye (to someone leaving)",
+   "ex": "",
+   "ex_en": null,
+   "note": "Literally \"go slowly\".",
+   "zh": "慢走"
+  },
+  {
+   "n": 7,
+   "bo": "ག་ལེར་བཞུགས།",
+   "en": "goodbye (to someone staying)",
+   "ex": "",
+   "ex_en": null,
+   "note": "Literally \"stay slowly\".",
+   "zh": "慢坐"
+  },
+  {
+   "n": 8,
+   "bo": "སློབ་མ་",
+   "en": "student",
+   "ex": "ང་སློབ་མ་ཡིན།",
+   "ex_en": "I am a student.",
+   "note": null,
+   "zh": "学生"
+  }
+ ],
+ "expressions": [
+  {
+   "n": 1,
+   "bo": "ཁྱེད་རང་སྐུ་གཟུགས་བདེ་པོ་ཡིན་པས།",
+   "en": "How are you? (polite)",
+   "note": null,
+   "zh": "您身体好吗？"
+  },
+  {
+   "n": 2,
+   "bo": "ཁྱེད་རང་གི་མཚན་ལ་ག་རེ་ཞུ་གི་ཡོད།",
+   "en": "What is your name? (polite)",
+   "note": null,
+   "zh": "您叫什么名字？"
+  },
+  {
+   "n": 3,
+   "bo": "ཡག་པོ་རེད།",
+   "en": "Good. / All right.",
+   "note": null,
+   "zh": "好的"
+  },
+  {
+   "n": 4,
+   "bo": "དགོངས་དག",
+   "en": "Sorry. / Excuse me.",
+   "note": null,
+   "zh": "对不起"
+  },
+  {
+   "n": 5,
+   "bo": "ཡང་བསྐྱར་མཇལ་ཡོང་།",
+   "en": "See you again.",
+   "note": null,
+   "zh": "再见"
+  }
+ ],
+ "grammar": {
+  "patterns": [
+   "ང་ … ཡིན།"
+  ],
+  "pattern_en": "I am … (ཡིན is the copula for yourself)",
+  "notes": "Use ཡིན་ when you say who or what you are. About someone else you usually hear རེད་ instead.",
+  "examples": [
+   {
+    "bo": "ང་སློབ་མ་ཡིན།",
+    "en": "I am a student."
+   },
+   {
+    "bo": "ཁོ་དགེ་རྒན་རེད།",
+    "en": "He is a teacher."
+   }
+  ]
+ },
+ "dialogue": {
+  "title": {
+   "bo": "ལམ་ཁར་ཐུག་པ།",
+   "en": "Meeting on the road"
+  },
+  "turns": [
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "བཀྲ་ཤིས་བདེ་ལེགས། ཁྱེད་རང་སྐུ་གཟུགས་བདེ་པོ་ཡིན་པས།",
+    "en": "Hello! How are you?"
+   },
+   {
+    "who": "པདྨ",
+    "bo": "བདེ་པོ་ཡིན། ཐུགས་རྗེ་ཆེ། ཁྱེད་རང་གི་མཚན་ལ་ག་རེ་ཞུ་གི་ཡོད།",
+    "en": "I'm well, thank you. What is your name?"
+   },
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ངའི་མིང་ལ་བཀྲ་ཤིས་ཟེར། ཁྱེད་རང་གི་མཚན་ལ་ག་རེ་ཞུ་གི་ཡོད།",
+    "en": "My name is Tashi. What is yours?"
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ངའི་མིང་ལ་པདྨ་ཟེར། ཁྱེད་རང་ག་ནས་ཕེབས་པ་ཡིན།",
+    "en": "My name is Pema. Where are you from?"
+   },
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ང་ལྷ་ས་ནས་ཡིན།",
+    "en": "I'm from Lhasa."
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ཡག་པོ་རེད། ཡང་བསྐྱར་མཇལ་ཡོང་། ག་ལེར་བཞུགས།",
+    "en": "Lovely. See you again. Goodbye!"
+   },
+   {
+    "who": "བཀྲ་ཤིས",
+    "bo": "ལགས། ག་ལེར་ཕེབས།",
+    "en": "Yes. Goodbye!"
+   }
+  ]
+ },
+ "proverb": [],
+ "culture": [],
+ "exercises": {
+  "unscramble": {
+   "scene": null,
+   "items": []
+  },
+  "passage": null,
+  "gaps": {
+   "example": null,
+   "sets": [
+    {
+     "bank": [
+      "ཡིན",
+      "རེད"
+     ],
+     "items": [
+      {
+       "bo": "ང་བཀྲ་ཤིས་ ＿＿ །",
+       "fill": "ཡིན",
+       "en": "I am Tashi.",
+       "unsure": false
+      },
+      {
+       "bo": "པདྨ་སློབ་མ་ ＿＿ །",
+       "fill": "རེད",
+       "en": "Pema is a student.",
+       "unsure": false
+      }
+     ]
+    }
+   ]
+  },
+  "talk": [
+   {
+    "bo": "ཁྱེད་རང་ག་ནས་ཕེབས་པ་ཡིན།",
+    "en": "Where are you from?"
+   }
+  ]
+ },
+ "flags": [],
+ "status": {
+  "extracted": null,
+  "translated": "2026-10-18",
+  "reviewed": null
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "date": "2026-10-03",
+ "title": "Polite words · first sentences",
+ "raw": null,
+ "items": [
+  {
+   "id": "c20261003-01",
+   "kind": "word",
+   "bo": "ཇ་",
+   "en": "tea",
+   "zh": "茶",
+   "note": null
+  },
+  {
+   "id": "c20261003-02",
+   "kind": "word",
+   "bo": "ཆུ་",
+   "en": "water",
+   "zh": "水",
+   "note": null
+  },
+  {
+   "id": "c20261003-03",
+   "kind": "word",
+   "bo": "ཁ་ལག་",
+   "en": "food, a meal",
+   "zh": "饭",
+   "note": null
+  },
+  {
+   "id": "c20261003-04",
+   "kind": "pair",
+   "en": "name",
+   "zh": "名字",
+   "or": "མིང་",
+   "ho": "མཚན་",
+   "note": null
+  },
+  {
+   "id": "c20261003-05",
+   "kind": "pair",
+   "en": "to eat, to drink",
+   "zh": "吃；喝",
+   "or": "ཟ་ / འཐུང་",
+   "ho": "བཞེས་",
+   "note": null
+  },
+  {
+   "id": "c20261003-06",
+   "kind": "pair",
+   "en": "to come, to go",
+   "zh": "来；去",
+   "or": "ཡོང་ / འགྲོ་",
+   "ho": "ཕེབས་",
+   "note": null
+  },
+  {
+   "id": "c20261003-07",
+   "kind": "pair",
+   "en": "body, health",
+   "zh": "身体",
+   "or": "གཟུགས་པོ་",
+   "ho": "སྐུ་གཟུགས་",
+   "note": null
+  },
+  {
+   "id": "c20261003-08",
+   "kind": "sentence",
+   "bo": "ཇ་བཞེས་རོགས།",
+   "en": "Please have some tea.",
+   "zh": "请喝茶。",
+   "note": "Polite: བཞེས་ for the guest."
+  },
+  {
+   "id": "c20261003-09",
+   "kind": "sentence",
+   "bo": "ང་བོད་སྐད་སློབ་སྦྱོང་བྱེད་ཀྱི་ཡོད།",
+   "en": "I am studying Tibetan.",
+   "zh": "我在学藏语。",
+   "note": null
+  },
+  {
+   "id": "c20261003-10",
+   "kind": "sentence",
+   "bo": "ཁ་ལག་ཞིམ་པོ་འདུག",
+   "en": "The food is delicious.",
+   "zh": "饭很好吃。",
+   "note": null
+  },
+  {
+   "id": "c20261003-11",
+   "kind": "grammar",
+   "bo": "ཁོ / ཁོས / ཁོའི",
+   "en": "he / he (doing something) / his",
+   "zh": "他 / 他（施事）/ 他的",
+   "note": "ཁོས་ marks him as the one doing an action: ཁོས་ཇ་འཐུང་གི་འདུག He is drinking tea."
+  }
+ ]
+}

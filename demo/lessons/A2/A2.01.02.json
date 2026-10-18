@@ -1,0 +1,257 @@
+{
+ "schema": 1,
+ "id": "A2.01.02",
+ "level": "A2",
+ "book": "Demo book",
+ "pdf": null,
+ "pages": [
+  3,
+  4
+ ],
+ "topic": {
+  "bo": "ཚོང་ཁང་།",
+  "en": "In the shop"
+ },
+ "title": {
+  "bo": "གྲངས་ཀ།",
+  "en": "Numbers"
+ },
+ "goals": {
+  "talk": null,
+  "grammar": null
+ },
+ "vocab": [
+  {
+   "n": 1,
+   "bo": "གཅིག",
+   "en": "one",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "一"
+  },
+  {
+   "n": 2,
+   "bo": "གཉིས",
+   "en": "two",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "二"
+  },
+  {
+   "n": 3,
+   "bo": "གསུམ",
+   "en": "three",
+   "ex": "ང་ཚོ་མི་གསུམ་ཡོད།",
+   "ex_en": "There are three of us.",
+   "note": null,
+   "zh": "三"
+  },
+  {
+   "n": 4,
+   "bo": "བཞི",
+   "en": "four",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "四"
+  },
+  {
+   "n": 5,
+   "bo": "ལྔ",
+   "en": "five",
+   "ex": "ཁོ་ལོ་ལྔ་རེད།",
+   "ex_en": "He is five years old.",
+   "note": null,
+   "zh": "五"
+  },
+  {
+   "n": 6,
+   "bo": "དྲུག",
+   "en": "six",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "六"
+  },
+  {
+   "n": 7,
+   "bo": "བདུན",
+   "en": "seven",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "七"
+  },
+  {
+   "n": 8,
+   "bo": "བརྒྱད",
+   "en": "eight",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "八"
+  },
+  {
+   "n": 9,
+   "bo": "དགུ",
+   "en": "nine",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "九"
+  },
+  {
+   "n": 10,
+   "bo": "བཅུ",
+   "en": "ten",
+   "ex": "སྒོར་མོ་བཅུ་རེད།",
+   "ex_en": "It's ten yuan.",
+   "note": null,
+   "zh": "十"
+  },
+  {
+   "n": 11,
+   "bo": "སྒོར་མོ་",
+   "en": "money; yuan",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "钱；元"
+  },
+  {
+   "n": 12,
+   "bo": "བག་ལེབ་",
+   "en": "bread",
+   "ex": "",
+   "ex_en": null,
+   "note": null,
+   "zh": "面包"
+  }
+ ],
+ "expressions": [
+  {
+   "n": 1,
+   "bo": "ག་ཚོད་རེད།",
+   "en": "How much is it?",
+   "note": null,
+   "zh": "多少钱？"
+  },
+  {
+   "n": 2,
+   "bo": "ཆུ་ཚོད་ག་ཚོད་རེད།",
+   "en": "What time is it?",
+   "note": null,
+   "zh": "几点了？"
+  },
+  {
+   "n": 3,
+   "bo": "ཁྱེད་རང་དགུང་ལོ་ག་ཚོད་ཡིན།",
+   "en": "How old are you? (polite)",
+   "note": null,
+   "zh": "您多大年纪？"
+  }
+ ],
+ "grammar": {
+  "patterns": [
+   "… ག་ཚོད་རེད།"
+  ],
+  "pattern_en": "How much / how many is …?",
+  "notes": "ག་ཚོད་ asks for a number or an amount. The answer simply puts the number in its place.",
+  "examples": [
+   {
+    "bo": "འདི་ག་ཚོད་རེད།",
+    "en": "How much is this?"
+   },
+   {
+    "bo": "འདི་སྒོར་མོ་ལྔ་རེད།",
+    "en": "This is five yuan."
+   }
+  ]
+ },
+ "dialogue": {
+  "title": {
+   "bo": "ཚོང་ཁང་ནང་།",
+   "en": "In the shop"
+  },
+  "turns": [
+   {
+    "who": "པདྨ",
+    "bo": "བག་ལེབ་འདི་ག་ཚོད་རེད།",
+    "en": "How much is this bread?"
+   },
+   {
+    "who": "ཚོང་པ",
+    "bo": "སྒོར་མོ་གསུམ་རེད།",
+    "en": "Three yuan."
+   },
+   {
+    "who": "པདྨ",
+    "bo": "བག་ལེབ་གཉིས་གནང་རོགས།",
+    "en": "Two, please."
+   },
+   {
+    "who": "ཚོང་པ",
+    "bo": "ལགས་སོ། སྒོར་མོ་དྲུག་རེད།",
+    "en": "Certainly. That's six yuan."
+   },
+   {
+    "who": "པདྨ",
+    "bo": "ཡག་པོ་རེད། ཐུགས་རྗེ་ཆེ།",
+    "en": "Great, thank you."
+   },
+   {
+    "who": "ཚོང་པ",
+    "bo": "ག་ལེར་ཕེབས།",
+    "en": "Goodbye!"
+   }
+  ]
+ },
+ "proverb": [],
+ "culture": [],
+ "exercises": {
+  "unscramble": {
+   "scene": null,
+   "items": []
+  },
+  "passage": null,
+  "gaps": {
+   "example": null,
+   "sets": [
+    {
+     "bank": [
+      "ག་ཚོད",
+      "གསུམ"
+     ],
+     "items": [
+      {
+       "bo": "བག་ལེབ་འདི་ ＿＿ རེད།",
+       "fill": "ག་ཚོད",
+       "en": "How much is this bread?",
+       "unsure": false
+      },
+      {
+       "bo": "ང་ཚོ་མི་ ＿＿ ཡོད།",
+       "fill": "གསུམ",
+       "en": "There are three of us.",
+       "unsure": false
+      }
+     ]
+    }
+   ]
+  },
+  "talk": [
+   {
+    "bo": "ཁྱེད་རང་དགུང་ལོ་ག་ཚོད་ཡིན།",
+    "en": "How old are you?"
+   }
+  ]
+ },
+ "flags": [],
+ "status": {
+  "extracted": null,
+  "translated": "2026-10-18",
+  "reviewed": null
+ }
+}
